@@ -1,0 +1,22 @@
+{
+  "name": "next-living-lens-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest",
+    "prisma": "latest",
+    "@prisma/client": "latest",
+    "nats": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest"
+  }
+}

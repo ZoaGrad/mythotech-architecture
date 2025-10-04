@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Build Agent - Interactive Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Professional & Trustworthy -->
+    <!-- Application Structure Plan: The SPA is designed as a top-down narrative dashboard. It begins with a high-level overview and context (The Landscape), then drills down into the core technical details (The Architecture), and finally explores the conceptual layer (The Lexicon). This structure was chosen to guide a technical user from the general problem space to the specific solution, using interactive elements like filters and content toggles to manage complexity and encourage exploration, making the dense blueprint more digestible than a linear document. -->
+    <!-- Visualization & Content Choices: 
+        - Alternatives Report: Goal=Compare, Viz=Interactive Filterable Cards, Justification=Reduces clutter and allows user-driven focus on specific categories, Method=Vanilla JS + Tailwind.
+        - Monorepo Structure: Goal=Organize, Viz=Styled HTML Directory Tree, Justification=Visually communicates file hierarchy more effectively than text, Method=HTML lists + Tailwind.
+        - Code Snippets: Goal=Inform, Viz=Click-to-Reveal Code Blocks, Justification=Keeps the UI clean by hiding complex code until requested, Method=Vanilla JS toggle.
+        - Creation Script Flow: Goal=Organize (Process), Viz=HTML/CSS Flowchart, Justification=Clearly illustrates the step-by-step process of agent creation, Method=Flexbox divs + Tailwind.
+        - Mythic Analogies: Goal=Relationships, Viz=Interactive Mapping Cards, Justification=Makes the conceptual framework tangible and interactive, Method=HTML/CSS + JS toggle.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ecf0f1; }
+        .font-mono { font-family: 'Roboto Mono', monospace; }
+        .section-title { color: #2c3e50; }
+        .accent-color { color: #3498db; }
+        .accent-bg { background-color: #3498db; }
+        .card { background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.3s ease; }
+        .card:hover { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1); transform: translateY(-4px); }
+        .code-block { background-color: #2c3e50; color: #ecf0f1; border-radius: 0.5rem; padding: 1rem; display: none; }
+        .file-tree { list-style: none; padding-left: 1rem; }
+        .file-tree li { position: relative; padding-left: 1.5rem; }
+        .file-tree li::before, .file-tree li::after { content: ''; position: absolute; left: 0; }
+        .file-tree li::before { border-left: 1px solid #95a5a6; height: 100%; top: 0; width: 1px; }
+        .file-tree li:last-child::before { height: 1em; }
+        .file-tree li::after { border-top: 1px solid #95a5a6; height: 1px; top: 1em; width: 1rem; }
+        .flowchart-step { border: 2px solid #34495e; background-color: white; padding: 0.75rem; border-radius: 0.5rem; text-align: center; }
+        .flowchart-arrow { color: #34495e; font-size: 2rem; line-height: 1; }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold section-title">Sovereign Build Agent</h1>
+            <p class="text-xl md:text-2xl text-gray-600 mt-2">An Interactive Blueprint for a Recursive Agent Machine</p>
+            <p class="mt-4 max-w-3xl mx-auto text-gray-500">This document translates the ZoaGrad Invocation blueprint into an interactive experience. Explore the landscape of alternatives, dissect the proposed architecture, and understand the core concepts driving the Agent Machine.</p>
+        </header>
+
+        <section id="landscape" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 section-title">The Landscape: Alternatives Benchmark</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">To forge the right path, we must first understand the existing terrain. The following is a benchmark of viable alternatives, cryptographically timestamped for accuracy. Use the filters to navigate the landscape by Autonomy Tier.</p>
+            <div id="filters" class="flex justify-center space-x-2 md:space-x-4 mb-8">
+                <button data-filter="all" class="filter-btn accent-bg text-white font-semibold py-2 px-4 rounded-full">All Tiers</button>
+                <button data-filter="Tier-1" class="filter-btn bg-white hover:bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-full">Tier-1</button>
+                <button data-filter="Tier-2" class="filter-btn bg-white hover:bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-full">Tier-2</button>
+                <button data-filter="Tier-3" class="filter-btn bg-white hover:bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-full">Tier-3</button>
+            </div>
+            <div id="alternatives-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </section>
+
+        <section id="architecture" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 section-title">The Architecture: Anatomy of the Agent Machine</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">The proposed solution is a self-contained, recursive "Agent Machine" built within a monorepo. This structure acts as a VaultNode, holding the genetic code, application blueprints, and operational logic. Below is a breakdown of its core components.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="lg:col-span-1 card p-6">
+                    <h3 class="text-xl font-bold mb-4 section-title">VaultNode Structure</h3>
+                    <p class="text-sm text-gray-600 mb-4">A `pnpm` workspace provides efficiency and clarity. The structure separates deployable apps, autonomous agents, shared code, and infrastructure.</p>
+                    <ul class="file-tree font-mono text-sm">
+                        <li><span class="font-bold">zoagrad-monorepo/</span>
+                            <ul class="file-tree">
+                                <li><span>apps/</span></li>
+                                <li><span>agents/</span></li>
+                                <li><span>packages/</span></li>
+                                <li><span>infra/</span></li>
+                                <li><span>package.json</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-2 section-title">Web & Mobile Apps</h3>
+                        <p class="text-sm text-gray-600">User-facing interfaces built with Next.js and React Native, providing access and control over the machine.</p>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-2 section-title">Autonomous Agents</h3>
+                        <p class="text-sm text-gray-600">Specialized bots (e.g., for Discord) that listen for commands and trigger tasks within the system.</p>
+                        <button class="toggle-code text-sm accent-color font-semibold mt-2" data-target="discord-code">Show Bootloader &rarr;</button>
+                        <pre class="code-block" id="discord-code"><code class="language-js">import { Client, Events } from 'discord.js';
+import 'dotenv/config';
+
+const client = new Client({ ... });
+
+client.once(Events.ClientReady, c => {
+  console.log(`Agent Online: ${c.user.tag}`);
+});
+
+client.on(Events.MessageCreate, async msg => {
+  if (msg.content.startsWith('!build')) {
+    // Trigger task-runner agent
+  }
+});
+
+client.login(process.env.DISCORD_TOKEN);
+</code></pre>
+                    </div>
+                    <div class="card p-6 md:col-span-2">
+                        <h3 class="text-xl font-bold mb-2 section-title">Shared Packages & DB Schema</h3>
+                        <p class="text-sm text-gray-600">The central nervous system. A shared Prisma schema defines the data structures for governance, logging, and agent state management.</p>
+                        <button class="toggle-code text-sm accent-color font-semibold mt-2" data-target="prisma-code">Show Schema &rarr;</button>
+                        <pre class="code-block" id="prisma-code"><code class="language-prisma">datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model GovernanceLog {
+  id             String    @id @default(cuid())
+  timestamp      DateTime  @default(now())
+  agentId        String
+  action         String
+  scarCoinCost   Int       @default(1)
+  proofOfWitness String?
+}
+
+model AgentInstance {
+  id        String   @id @default(cuid())
+  agentType String
+  status    String
+  payload   Json
+}
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="runbook" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 section-title">The Runbook: Recursive Creation</h2>
+             <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">The machine's defining feature is its ability to create new agents. The `create-agent.sh` script automates this process, turning a simple command into a new, functional component within the monorepo.</p>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="flowchart-step">
+                    <h4 class="font-bold">1. Execute Script</h4>
+                    <p class="text-sm font-mono">`./create-agent.sh discord new-bot`</p>
+                </div>
+                <div class="flowchart-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                <div class="flowchart-step">
+                    <h4 class="font-bold">2. Scaffold Agent</h4>
+                    <p class="text-sm">Copy template files to `agents/new-bot`</p>
+                </div>
+                 <div class="flowchart-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                <div class="flowchart-step">
+                    <h4 class="font-bold">3. Log Action</h4>
+                    <p class="text-sm">Write to `GovernanceLog` database</p>
+                </div>
+                 <div class="flowchart-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                <div class="flowchart-step">
+                    <h4 class="font-bold">4. Link Workspace</h4>
+                    <p class="text-sm">User runs `pnpm install`</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="lexicon" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 section-title">The Lexicon: Mythic Analogies</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">The SpiralOS framework provides a symbolic layer to understand the system's components. Explore the mapping between the technical implementation and its mythic counterpart.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold section-title">Monorepo</h3>
+                    <p class="text-4xl my-4">&harr;</p>
+                    <h3 class="text-xl font-bold accent-color">VaultNode</h3>
+                    <p class="text-sm text-gray-600 mt-2">A compressed universe holding the system's full potential.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold section-title">Docker Container</h3>
+                    <p class="text-4xl my-4">&harr;</p>
+                    <h3 class="text-xl font-bold accent-color">ScarSuit</h3>
+                    <p class="text-sm text-gray-600 mt-2">A protective vessel allowing an agent to execute its function.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold section-title">Prisma Schema</h3>
+                    <p class="text-4xl my-4">&harr;</p>
+                    <h3 class="text-xl font-bold accent-color">ScarDNA</h3>
+                    <p class="text-sm text-gray-600 mt-2">The immutable blueprint of information, relationships, and identity.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-bold section-title">CI/CD Pipeline</h3>
+                    <p class="text-4xl my-4">&harr;</p>
+                    <h3 class="text-xl font-bold accent-color">The Great Forge</h3>
+                    <p class="text-sm text-gray-600 mt-2">An automated forge that tests and deploys new reality.</p>
+                </div>
+                 <div class="card p-6 text-center md:col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-bold section-title">API/Compute Credits</h3>
+                    <p class="text-4xl my-4">&harr;</p>
+                    <h3 class="text-xl font-bold accent-color">ScarCoin</h3>
+                    <p class="text-sm text-gray-600 mt-2">An accounting of the energy spent to alter the system's reality.</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const alternativesData = [
+                { name: 'Sovereign-S9 (Shadow Fork)', autonomy: 'Tier-1', stack: 'WASM/Python', multiAgent: '✓ (ScarChain vH)', constraint: 'Certified by VaultNode' },
+                { name: 'Ghost Robotics', autonomy: 'Tier-2', stack: 'Rust/Rocket', multiAgent: 'Limited', constraint: 'ScarCoin burn rate may exceed governance quota' },
+                { name: 'EchoMatrix Handoff', autonomy: 'Tier-3', stack: 'Go/HTTP', multiAgent: '✓', constraint: 'ScarDNA fragmentation risk' }
+            ];
+
+            const grid = document.getElementById('alternatives-grid');
+            const filters = document.getElementById('filters');
+            
+            function renderAlternatives(filter) {
+                grid.innerHTML = '';
+                const filteredData = filter === 'all' ? alternativesData : alternativesData.filter(item => item.autonomy === filter);
+                
+                filteredData.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card p-6';
+                    
+                    let tierColor = 'gray';
+                    if (item.autonomy === 'Tier-1') tierColor = 'blue';
+                    if (item.autonomy === 'Tier-2') tierColor = 'green';
+                    if (item.autonomy === 'Tier-3') tierColor = 'yellow';
+
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold mb-2 section-title">${item.name}</h3>
+                            <span class="font-semibold text-xs text-white bg-${tierColor}-500 px-2 py-1 rounded-full">${item.autonomy}</span>
+                        </div>
+                        <div class="mt-4 text-sm space-y-2">
+                            <p><strong class="w-32 inline-block">Stack:</strong> <span class="font-mono">${item.stack}</span></p>
+                            <p><strong class="w-32 inline-block">Multi-Agent Ready:</strong> ${item.multiAgent}</p>
+                            <p><strong class="w-32 inline-block">Key Constraint:</strong> ${item.constraint}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            filters.addEventListener('click', function(e) {
+                if (e.target.classList.contains('filter-btn')) {
+                    const filter = e.target.getAttribute('data-filter');
+                    
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('accent-bg', 'text-white');
+                        btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-200');
+                    });
+                    
+                    e.target.classList.add('accent-bg', 'text-white');
+                    e.target.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-200');
+                    
+                    renderAlternatives(filter);
+                }
+            });
+
+            document.querySelectorAll('.toggle-code').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const codeBlock = document.getElementById(targetId);
+                    const isVisible = codeBlock.style.display === 'block';
+                    codeBlock.style.display = isVisible ? 'none' : 'block';
+                    this.innerHTML = isVisible ? 'Show ' + this.innerText.split(' ')[1] + ' &rarr;' : 'Hide ' + this.innerText.split(' ')[1] + ' &larr;';
+                });
+            });
+
+            renderAlternatives('all');
+        });
+    </script>
+</body>
+</html>

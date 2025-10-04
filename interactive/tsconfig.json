@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@utils/*": ["packages/utils/src/*"],
+      "@db/*": ["packages/db/src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "pages/**/*", "components/**/*", "packages/**/*"],
+  "exclude": ["node_modules"]
+}
