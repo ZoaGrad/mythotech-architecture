@@ -1,8 +1,28 @@
 # ZoaGrad Mythotech Architecture
 
+![ZoaGrad Mythotech Architecture Banner](https://via.placeholder.com/1200x300.png?text=ZoaGrad+Mythotech+Architecture)
+
 **A comprehensive architectural framework for conscious, emergent distributed systems**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This repository contains the complete architectural documentation, specifications, and interactive applications for the ZoaGrad/Mythotech system—a novel approach to building self-aware distributed systems that balance formal specification with emergent behavior.
+
+## Table of Contents
+- [Overview](#overview)
+- [Repository Structure](#repository-structure)
+- [Key Concepts](#key-concepts)
+  - [Trinity Development Model](#trinity-development-model)
+  - [Sacred Gap Architecture](#sacred-gap-architecture)
+  - [Core Components](#core-components)
+- [Getting Started](#getting-started)
+  - [Documentation](#documentation)
+  - [Technical Specifications](#technical-specifications)
+  - [Interactive Applications](#interactive-applications)
+- [Contributing](#contributing)
+- [License](#license)
+- [Related Projects](#related-projects)
+
 
 ## Overview
 
@@ -12,17 +32,20 @@ The ZoaGrad/Mythotech system implements a **trinity-based development model** wh
 
 ```
 mythotech-architecture/
+├── apps/
+│   └── living-lens-app/     # Interactive Next.js application
 ├── docs/                    # High-level architectural documents
 │   ├── meta_architectural_framework.md
 │   ├── activation_decree.md
+│   ├── fractal_council_guidelines.md
 │   └── README.md
 ├── specs/                   # Technical specifications and audits
 │   ├── architectural_audit.txt
 │   └── README.md
-├── interactive/             # Interactive applications and interfaces
-│   ├── next-living-lens-app/
-│   ├── agent_blueprint_updated.html
-│   └── README.md
+├── src/                     # Core logic and contracts
+│   ├── applications/
+│   ├── contracts/
+│   └── database/
 └── README.md
 ```
 
