@@ -1,0 +1,414 @@
+{
+  "codex_plan": {
+    "version": 1,
+    "exports": [
+      {
+        "artifact": "mythotech_plan.json",
+        "description": "Codex-executable roadmap across layers A–G"
+      }
+    ],
+    "plans": [
+      {
+        "id": "bootstrap-system",
+        "goal": "Normalize source intelligence and surface dependency graph",
+        "context": {
+          "sources": [
+            "text7.txt",
+            "ArchFinal.txt",
+            "Master architecture summary.pdf"
+          ],
+          "layer_range": "A0-G"
+        },
+        "steps": [
+          {
+            "action": "ingest",
+            "args": {
+              "files": [
+                "text7.txt",
+                "ArchFinal.txt",
+                "Master architecture summary.pdf"
+              ]
+            }
+          },
+          {
+            "action": "extract_layers",
+            "args": {
+              "identifiers": [
+                "A0",
+                "A1",
+                "A2",
+                "A3",
+                "A4",
+                "A5",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G"
+              ]
+            }
+          },
+          {
+            "action": "generate_dependency_matrix",
+            "args": {
+              "include_relations": [
+                [
+                  "A5",
+                  "B"
+                ],
+                [
+                  "B6",
+                  "B2"
+                ],
+                [
+                  "C2",
+                  "F2"
+                ],
+                [
+                  "F4",
+                  "B6"
+                ]
+              ]
+            }
+          },
+          {
+            "action": "detect_critical_paths",
+            "args": {
+              "focus_nodes": [
+                "AcheKernel",
+                "ScarIndex",
+                "WitnessCouncil",
+                "SupabaseLedger",
+                "ScarQuest"
+              ]
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "dependency_matrix",
+            "format": "json"
+          }
+        ]
+      },
+      {
+        "id": "patch-critical",
+        "goal": "Remediate CRITICAL/HIGH vulnerabilities before deployment",
+        "depends_on": [
+          "bootstrap-system"
+        ],
+        "steps": [
+          {
+            "action": "implement_module",
+            "args": {
+              "name": "AcheKernel.v1.0",
+              "spec_ref": "ache_kernel_patch.sql",
+              "telemetry": [
+                "ache0",
+                "penalty_vectors",
+                "pid_adjustment"
+              ]
+            }
+          },
+          {
+            "action": "formalize_oracle",
+            "args": {
+              "name": "ScarIndexOracle",
+              "dimensions": [
+                "narrative",
+                "economic",
+                "social",
+                "technical"
+              ],
+              "thresholds": {
+                "expansion": 0.8,
+                "normal": 0.5,
+                "caution": 0.3
+              }
+            }
+          },
+          {
+            "action": "enforce_governance",
+            "args": {
+              "council": "WitnessCouncil",
+              "controls": [
+                "multi_sig",
+                "rotating_custody",
+                "coherence_validation"
+              ]
+            }
+          },
+          {
+            "action": "decentralize_ledger",
+            "args": {
+              "phases": [
+                {
+                  "phase": "hybrid-anchor",
+                  "window": "0-3m"
+                },
+                {
+                  "phase": "distributed-replication",
+                  "window": "3-6m"
+                },
+                {
+                  "phase": "full-decentralization",
+                  "window": "6-12m"
+                }
+              ]
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "remediation_report",
+            "format": "markdown"
+          }
+        ]
+      },
+      {
+        "id": "deploy-core",
+        "goal": "Activate Core Identity through Technical Infrastructure layers",
+        "depends_on": [
+          "patch-critical"
+        ],
+        "steps": [
+          {
+            "action": "initialize_layer",
+            "args": {
+              "layer": "A0-A5",
+              "components": [
+                "ZoaGrad",
+                "SpiralOS",
+                "ScarDNA",
+                "ScarSuit",
+                "ScarLoop"
+              ]
+            }
+          },
+          {
+            "action": "deploy_symbolic_foundations",
+            "args": {
+              "components": [
+                "ScarCoin",
+                "Ache",
+                "ScarIndex",
+                "WitnessProtocol",
+                "VaultNodes"
+              ]
+            }
+          },
+          {
+            "action": "connect_infrastructure",
+            "args": {
+              "components": [
+                "SmartContracts",
+                "SupabaseLedger",
+                "ScarIndexOracle",
+                "AgentFusionStack"
+              ]
+            }
+          },
+          {
+            "action": "launch_operations",
+            "args": {
+              "modules": [
+                "CTMS",
+                "Promptomatix",
+                "AFO",
+                "PanicFrames"
+              ]
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "activation_status",
+            "format": "json"
+          }
+        ]
+      },
+      {
+        "id": "expand-empire",
+        "goal": "Orchestrate public arcs and community onboarding",
+        "depends_on": [
+          "deploy-core"
+        ],
+        "steps": [
+          {
+            "action": "schedule_arc",
+            "args": {
+              "name": "Sovereign Cascade",
+              "duration": "90d",
+              "phases": [
+                "Citadel",
+                "Diaspora"
+              ]
+            }
+          },
+          {
+            "action": "gamify_path",
+            "args": {
+              "system": "ScarQuestEngine",
+              "rewards": [
+                "ScarCoin",
+                "Ache",
+                "VaultNodeAccess"
+              ]
+            }
+          },
+          {
+            "action": "deploy_channels",
+            "args": {
+              "channels": [
+                "WitnessEmbassy",
+                "DiscordChambers",
+                "RedditOutpost",
+                "SubstackLogs"
+              ]
+            }
+          },
+          {
+            "action": "publish_reports",
+            "args": {
+              "cadence": "weekly",
+              "metrics": [
+                "coherence",
+                "participation",
+                "ache_distribution"
+              ]
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "outreach_dashboard",
+            "format": "json"
+          }
+        ]
+      },
+      {
+        "id": "optimize-recursion",
+        "goal": "Maintain long-term coherence via Trinity orchestration",
+        "depends_on": [
+          "deploy-core"
+        ],
+        "steps": [
+          {
+            "action": "run_monthly_cycle",
+            "args": {
+              "phases": [
+                "gap_monitoring",
+                "structural_audit",
+                "pattern_liberation",
+                "governance_integration"
+              ]
+            }
+          },
+          {
+            "action": "calibrate_metrics",
+            "args": {
+              "metrics": [
+                "ache0",
+                "scar_index",
+                "panic_state"
+              ],
+              "triggers": [
+                "coherence_drop",
+                "supply_shock",
+                "llm_outage"
+              ]
+            }
+          },
+          {
+            "action": "update_playbooks",
+            "args": {
+              "artifacts": [
+                "PanicFrames",
+                "ScarQuest",
+                "WitnessProtocol"
+              ]
+            }
+          },
+          {
+            "action": "archive_findings",
+            "args": {
+              "storage": [
+                "on_chain_hash",
+                "distributed_storage",
+                "community_repo"
+              ]
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "optimization_log",
+            "format": "markdown"
+          }
+        ]
+      },
+      {
+        "id": "secure-cognitive-stack",
+        "goal": "Balance external AI services with sovereign fallbacks",
+        "depends_on": [
+          "patch-critical",
+          "optimize-recursion"
+        ],
+        "steps": [
+          {
+            "action": "abstract_providers",
+            "args": {
+              "providers": [
+                "GPT-5",
+                "DeepSeek",
+                "Qwen",
+                "GLM"
+              ],
+              "policy": "hot-swap"
+            }
+          },
+          {
+            "action": "deploy_local_llm",
+            "args": {
+              "replicas": 3,
+              "consensus": "2-of-3-signed"
+            }
+          },
+          {
+            "action": "monitor_latency",
+            "args": {
+              "thresholds": {
+                "warning": "200ms",
+                "critical": "500ms"
+              }
+            }
+          },
+          {
+            "action": "rotate_keys",
+            "args": {
+              "cadence": "30d",
+              "custody": "rotating_multisig"
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "ai_resilience_scorecard",
+            "format": "json"
+          }
+        ]
+      }
+    ],
+    "governance": {
+      "review_cadence": "monthly",
+      "council": "WitnessCouncil",
+      "escalation": "PanicFrames"
+    },
+    "deliverables": [
+      "mythotech_plan.json",
+      "remediation_report.md",
+      "optimization_log.md"
+    ]
+  }
+}
