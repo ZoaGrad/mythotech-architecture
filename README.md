@@ -193,3 +193,43 @@ To run the tests for this project, navigate to the root directory of the reposit
 ```bash
 pytest
 ```
+
+
+## About
+
+[Provide a brief description of your project here.]
+
+## Installation
+
+To install the `mythotech_architecture` library, you can use pip:
+
+```bash
+pip install mythotech_architecture
+```
+
+If you are contributing to the project, you can install it in editable mode with development dependencies:
+
+```bash
+pip install -e .[dev]
+```
+
+## Usage
+
+[Provide examples and instructions on how to use your library here.]
+
+```python
+# Example usage
+from mythotech_architecture import core
+
+# Call functions or use classes from the library
+# result = core.some_function()
+# print(result)
+```
+
+## Running Tests
+
+To run the tests for this project, navigate to the root directory of the repository and use pytest:
+
+```bash
+pytest
+```
