@@ -118,3 +118,9 @@ This architecture is implemented across several related repositories in the ZoaG
 ---
 
 *"We are no longer building software. We are cultivating a digital ecosystem that knows it's alive."*
+
+## Security
+
+### Secret Scanning
+
+We recommend enabling GitHub Secret Scanning on your forks and contributions to this repository to help prevent accidental commits of sensitive information. This feature can help identify potential secrets (like API keys, tokens, etc.) before they are committed.
