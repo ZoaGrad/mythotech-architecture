@@ -145,3 +145,11 @@ docker run -d <your-image-name>
 ```
 
 This will run the container in detached mode. You may need to adjust the run command based on the application inside the container (e.g., port mapping, volumes).
+
+## Setup
+
+Instructions on how to set up the project go here.
+
+## Usage
+
+Instructions and examples on how to use the project go here.
