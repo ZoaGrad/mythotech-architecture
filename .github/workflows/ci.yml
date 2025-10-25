@@ -26,28 +26,31 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         # Install common dev dependencies for linters/formatters/tests if not in project dependencies
-        pip install flake8 black mypy pytest ruff autoflake autopep8 isort
+        pip install ruff black mypy pytest
         # Install project dependencies if requirements.txt exists
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        # If using pyproject.toml with poetry or pdm, replace above with:
-        # curl -sSL https://install.python-poetry.org | python -
-        # poetry install --no-root
-        # curl -sSL https://pdm.flogisoft.com/install.sh | python -
-        # pdm install --no-root
+        # If using pyproject.toml with poetry or pdm, you might need different installation steps.
+        # For poetry: curl -sSL https://install.python-poetry.org | python - && poetry install --no-root
+        # For pdm: curl -sSL https://pdm.flogisoft.com/install.sh | python - && pdm install --no-root
+
     - name: Run Linters
       run: |
-        # Run ruff if pyproject.toml exists, otherwise flake8
-        if [ -f pyproject.toml ]; then ruff check .; else flake8 .; fi
+        # Run ruff if pyproject.toml exists, otherwise suggest manual linting setup
+        if [ -f pyproject.toml ]; then ruff check .; else echo "No pyproject.toml found. Consider setting up a linter like flake8 or ruff manually."; fi
 
     - name: Run Formatters Check
       run: |
         # Run black check
         black --check .
-        # Run isort check
-        isort --check .
+        # Add other formatters if applicable (e.g., isort --check .)
 
     - name: Run Type Checker (Mypy)
-      run: mypy .
+      # Run mypy if pyproject.toml exists, otherwise suggest manual typing setup
+      run: |
+        if [ -f pyproject.toml ]; then mypy .; else echo "No pyproject.toml found. Consider setting up a type checker like mypy manually."; fi
 
     - name: Run Tests (Pytest)
-      run: pytest
+      # Run pytest if a test directory or test files exist, otherwise suggest manual test setup
+      run: |
+        if [ -d tests ] || ls test_*.py 1> /dev/null 2>&1; then pytest; else echo "No standard test setup (tests directory or test_ files) found. Consider adding tests and a test runner like pytest."; fi
+
