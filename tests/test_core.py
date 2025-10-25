@@ -1,5 +1,5 @@
 # Basic smoke test added by automation
-import mythotech-architecture
+import mythotech_architecture
 
 def test_smoke():
     # This is a placeholder test. Replace with a meaningful test case.
