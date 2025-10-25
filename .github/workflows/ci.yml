@@ -1,0 +1,53 @@
+
+# Basic CI workflow
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Or a specific version like '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # Install common dev dependencies for linters/formatters/tests if not in project dependencies
+        pip install flake8 black mypy pytest ruff autoflake autopep8 isort
+        # Install project dependencies if requirements.txt exists
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        # If using pyproject.toml with poetry or pdm, replace above with:
+        # curl -sSL https://install.python-poetry.org | python -
+        # poetry install --no-root
+        # curl -sSL https://pdm.flogisoft.com/install.sh | python -
+        # pdm install --no-root
+    - name: Run Linters
+      run: |
+        # Run ruff if pyproject.toml exists, otherwise flake8
+        if [ -f pyproject.toml ]; then ruff check .; else flake8 .; fi
+
+    - name: Run Formatters Check
+      run: |
+        # Run black check
+        black --check .
+        # Run isort check
+        isort --check .
+
+    - name: Run Type Checker (Mypy)
+      run: mypy .
+
+    - name: Run Tests (Pytest)
+      run: pytest

@@ -1,0 +1,44 @@
+# Workflow to perform Static Code Analysis with CodeQL
+
+name: CodeQL Analysis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '20 1 * * 0' # Weekly on Sunday at 01:20 UTC
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript', 'python' ] # Add more languages if applicable: 'go', 'java', 'csharp', 'cpp', 'ruby'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+
+    # Autobuild attempts to build your code.
+    # If your code contained custom build steps, remove the autobuild step and add the required build steps here.
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    # Performs CodeQL analysis
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
