@@ -124,3 +124,24 @@ This architecture is implemented across several related repositories in the ZoaG
 ### Secret Scanning
 
 We recommend enabling GitHub Secret Scanning on your forks and contributions to this repository to help prevent accidental commits of sensitive information. This feature can help identify potential secrets (like API keys, tokens, etc.) before they are committed.
+
+
+## Docker
+
+This repository includes a basic `Dockerfile` to build a Docker image.
+
+To build the Docker image:
+
+```bash
+docker build -t <your-image-name> .
+```
+
+Replace `<your-image-name>` with a desired name for your Docker image.
+
+To run the Docker container:
+
+```bash
+docker run -d <your-image-name>
+```
+
+This will run the container in detached mode. You may need to adjust the run command based on the application inside the container (e.g., port mapping, volumes).
