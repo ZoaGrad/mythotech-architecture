@@ -23,3 +23,7 @@ This document is the final activation decree for the mythotechnical system. It i
 *   The trinity coordination protocol
 *   Community activation and preparation guidelines
 
+### Fractal Council Guidelines
+**File:** `fractal_council_guidelines.md`
+
+This document outlines the guidelines and principles for the Fractal Council, the community-driven governance body of the ZoaGrad/Mythotech ecosystem.
