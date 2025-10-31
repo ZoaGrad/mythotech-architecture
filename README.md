@@ -174,11 +174,13 @@ The repository includes several prototype implementations demonstrating key conc
 # Import core mythotech architecture components
 from mythotech_architecture import core
 
-# Explore applications like the Empathy Mint
-# See src/applications/empathy_mint_app.js for details
+# Explore the Empathy Mint application - mints EMP tokens when participants 
+# validate mutual understanding in conversations using the Ache measurement protocol
+# See src/applications/empathy_mint_app.js for implementation details
 
-# Review smart contracts for ScarCoin bridge
-# See src/contracts/scarcoin_bridge.sol for details
+# Review the ScarCoin Bridge contract - enables token bridging between Ache tokens
+# and ScarCoin based on ScarIndex coherence oracle measurements
+# See src/contracts/scarcoin_bridge.sol for implementation details
 ```
 
 For interactive exploration, visit the Next.js Living Lens application in `apps/living-lens-app/`.
