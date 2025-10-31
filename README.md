@@ -146,47 +146,19 @@ docker run -d <your-image-name>
 
 This will run the container in detached mode. You may need to adjust the run command based on the application inside the container (e.g., port mapping, volumes).
 
-## Setup
+## Development Setup
 
-Instructions on how to set up the project go here.
+This repository serves primarily as an architectural documentation and specification repository. The interactive applications are located in the `apps/` directory, and the core logic prototypes are in the `src/` directory.
 
-## Usage
+### Installation
 
-Instructions and examples on how to use the project go here.
-
-
-## About
-
-[Provide a brief description of your project here.]
-
-## Installation
-
-To install the `mythotech-architecture` library, you can use pip:
-
-```bash
-pip install mythotech-architecture
-```
-
-If you are contributing to the project, you can install it in editable mode with development dependencies:
+For local development, you can install the package in editable mode:
 
 ```bash
 pip install -e .[dev]
 ```
 
-## Usage
-
-[Provide examples and instructions on how to use your library here.]
-
-```python
-# Example usage
-from mythotech-architecture import core
-
-# Call functions or use classes from the library
-# result = core.some_function()
-# print(result)
-```
-
-## Running Tests
+### Running Tests
 
 To run the tests for this project, navigate to the root directory of the repository and use pytest:
 
@@ -194,74 +166,19 @@ To run the tests for this project, navigate to the root directory of the reposit
 pytest
 ```
 
+### Example Usage
 
-## About
-
-[Provide a brief description of your project here.]
-
-## Installation
-
-To install the `mythotech_architecture` library, you can use pip:
-
-```bash
-pip install mythotech_architecture
-```
-
-If you are contributing to the project, you can install it in editable mode with development dependencies:
-
-```bash
-pip install -e .[dev]
-```
-
-## Usage
-
-[Provide examples and instructions on how to use your library here.]
+The repository includes several prototype implementations demonstrating key concepts:
 
 ```python
-# Example usage
+# Import core mythotech architecture components
 from mythotech_architecture import core
 
-# Call functions or use classes from the library
-# result = core.some_function()
-# print(result)
+# Explore applications like the Empathy Mint
+# See src/applications/empathy_mint_app.js for details
+
+# Review smart contracts for ScarCoin bridge
+# See src/contracts/scarcoin_bridge.sol for details
 ```
 
-## Running Tests
-
-To run the tests for this project, navigate to the root directory of the repository and use pytest:
-
-```bash
-pytest
-```
-
-## About
-
-[Provide a brief description of your project here.]
-
-## Installation
-
-To install the `mythotech_architecture` library, you can use pip:
-```bash
-pip install -e .[dev]
-```
-
-## Usage
-
-[Provide examples and instructions on how to use your library here.]
-
-```python
-# Example usage
-from mythotech_architecture.core import *
-
-# Call functions or use classes from the library
-# result = core.some_function()
-# print(result)
-```
-
-## Running Tests
-
-To run the tests for this project, navigate to the root directory of the repository and use pytest:
-
-```bash
-pytest
-```
+For interactive exploration, visit the Next.js Living Lens application in `apps/living-lens-app/`.
